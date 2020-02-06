@@ -30,9 +30,10 @@ __webpack_require__.r(__webpack_exports__);
     addStudent: function addStudent() {
       if (!this.name) {
         return alertify.error('Please Input Name!');
-      }
+      } //console.log(this.name);
 
-      console.log(this.name);
+
+      this.$emit('add', this.name); //doAdd(this.name);
     },
     enterDoAdd: function enterDoAdd(e) {
       if (e.keyCode == 13 || e.which == 13) {
@@ -941,7 +942,11 @@ new Vue({
       title: 'Student List'
     };
   },
-  methods: {}
+  methods: {
+    doAdd: function doAdd(name) {
+      console.log(name);
+    }
+  }
 });
 
 /***/ }),

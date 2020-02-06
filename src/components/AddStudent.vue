@@ -21,7 +21,8 @@ export default {
             if (!this.name) {
                 return alertify.error('Please Input Name!');
             }
-            console.log(this.name);
+            //console.log(this.name);
+            this.$emit('add', this.name);   //doAdd(this.name);
         },
         enterDoAdd(e) {
             if (e.keyCode == 13 || e.which == 13) {

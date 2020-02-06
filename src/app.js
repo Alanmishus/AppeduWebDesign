@@ -12,6 +12,8 @@ new Vue({
         }
     },
     methods: {
-
+        doAdd(name) {
+            console.log(name);
+        }
     }
 })
