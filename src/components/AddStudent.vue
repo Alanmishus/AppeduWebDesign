@@ -23,6 +23,7 @@ export default {
             }
             //console.log(this.name);
             this.$emit('add', this.name);   //doAdd(this.name);
+            this.name = '';
         },
         enterDoAdd(e) {
             if (e.keyCode == 13 || e.which == 13) {

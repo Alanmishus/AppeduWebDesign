@@ -14,7 +14,7 @@
                         <input type="text" class="form-control" v-show="editIndex == index" v-model="item.name" @blur="setIndex(-1)" :ref="'index_' + index">
                     </td>
                     <td>
-                        <button class="btn btn-primary btn-sm" @click="editName(index)"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="btn btn-primary btn-sm" @click="toEdit(index)"><i class="fas fa-edit"></i> Edit</button>
                         <button class="btn btn-danger btn-sm" @click="removeIndex(index)"><i class="fas fa-trash-alt"></i> Delete</button>
                     </td>
                     
@@ -31,9 +31,9 @@ export default ({
         return {
             editIndex: -1,
             items: [
-                { name: 'Gifted Class', student: [] },
-                { name: 'Herding Class', student: [] },
-                { name: 'Special Class', student: [] },
+                { name: 'Gifted Class', students: [{name: 'A', sex: 'M', age: 19}] },
+                { name: 'Herding Class', students: [] },
+                { name: 'Special Class', students: [] },
             ]
         }
     },
@@ -53,7 +53,20 @@ export default ({
         removeIndex(index) {
             //console.log('remove' + index);
             this.items.splice(index, 1);
-        }
+        },
+        doAdd(name) {
+            this.items.push({
+                name: name,
+                students: []
+            });
+        },
+        toEdit(index){
+            let data = this.items[index];
+            this.$emit('edit', index, data);
+        },
+        update(index, data) {
+            this.items[index] = data;
+        },
     }
 })
 </script>

@@ -13,10 +13,21 @@
                 <h4><i class="fas fa-users"></i> {{ title }} </h4>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" v-show="mode == 'list'">
                 <add-student @add="doAdd"></add-student>
-                <student-name-list></student-name-list>
+                <student-name-list ref="table" @edit="toEdit"></student-name-list>
             </div>
+
+            <div class="form-group" v-show="mode == 'edit'">
+                <div class="form-group" >
+                    <button class="btn btn-danger btn-sm" @click="toList">Back to list</button>
+                </div>
+                <h5>Edit Name</h5>
+                <edit-list-name ref="editListName" @save="doSaveName"></edit-list-name>
+                <h5>Student List</h5>
+                <student-table ref="studentTable" @save="doSaveStudents"></student-table>
+            </div>
+
         </div>
     </body>
     <script src="js/manifest.js"></script>
